@@ -1,3 +1,5 @@
+![Fennec Logo](fennec.png)
+
 # Fennec
 Fennec is a light and portable implementation of Entity-Component System
 
