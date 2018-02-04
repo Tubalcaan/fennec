@@ -1,5 +1,5 @@
 # Fennec
-Fennec is a light and fast implementation of Entity-Component System
+Fennec is a light and portable implementation of Entity-Component System
 
 # Purpose of Fennec
 Fennec is intended to enhance your data objects so that you can implement a **light Entity-Component System**.
@@ -41,7 +41,18 @@ struct NameComponent: Component {
     var lastName: String = ""
 }
 ```
+Components have a default implementation of the "update()" method. You may redefine this method to provide a behavior when component must be updated
+```Swift
+struct NameComponent: Component {
+    var firstName: String = ""
+    var lastName: String = ""
 
+    mutating func update() {
+        firstName = ""
+        lastName = ""
+    }
+}
+```
 ### Managing Components in Entity
 Entities provide methods to handle Components
 #### Adding a Component
@@ -52,7 +63,8 @@ person.addComponent(nameComponent)
 ```
 #### Retrieving a Component
 ```Swift
-person.component(NameComponent.self)?.firstName
+let nameComponent = person.component(NameComponent.self)
+nameComponent?.firstName
 ```
 #### Removing a Component
 ```Swift
@@ -60,3 +72,31 @@ person.removeComponent(NameComponent.self)
 // person.component(NameComponent.self) returns nil
 ```
 ## System
+The System singleton provides methods to attach the entities and apply mass transformations to all or a subset of entities
+
+#### Adding an Entity to the System
+```Swift
+System.shared.addEntity(person)
+```
+You can also categorize your entities by groups
+```Swift
+System.shared.addEntity(person, toGroup: "DogOwners") // the person Entity is also added to the default group
+```
+#### Retrieving an Entity
+```Swift
+System.shared.entities() // retrieves all entities in the default group
+
+System.shared.entities(inGroup: "DogOwners") // retrieves all entities in group "DogOwners"
+```
+#### Removing an Entity from the System
+```Swift
+System.shared.removeEntity(person) // removes the person from all groups
+```
+#### Updating all entities
+```Swift
+System.shared.update() // execute all update methods of all the entities components
+
+System.shared.update(entitiesInGroup: "DogOwners") components
+```
+# Installation
+## Carthage
