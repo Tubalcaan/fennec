@@ -1,4 +1,4 @@
-![Fennec Logo](fennec.png)
+<center><img src="fennec.png" width=400></center>
 
 # Fennec
 Fennec is a light and portable implementation of Entity-Component System
