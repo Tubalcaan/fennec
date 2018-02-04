@@ -8,6 +8,8 @@
 
 import Foundation
 
+// TODO: remove entity from group
+
 public typealias ComponentType = String
 public struct System: Updatable {
     public static var shared = System()
@@ -17,9 +19,13 @@ public struct System: Updatable {
     
     public mutating func addEntity(_ entity: Entity, toGroup group: String = "") {
         entities.append(entity)
+        if groups[""] == nil {
+            groups[""] = []
+        }
         if groups[group] == nil {
             groups[group] = []
         }
+        groups[""]?.append(entity)
         groups[group]?.append(entity)
     }
     
