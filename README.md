@@ -64,7 +64,17 @@ person.addComponent(nameComponent)
 #### Retrieving a Component
 ```Swift
 let nameComponent = person.component(NameComponent.self)
-nameComponent?.firstName
+nameComponent?.firstName // Optional("John")
+```
+#### Updating a Component
+⚠️ Warning : you must be careful about the original type of your component when updating it. Don't forget Value Types are copied when modified.
+```Swift
+// your component is a struct
+person.component(NameComponent.self)?.firstName = "Johnny"
+
+// your component is a class
+let nameComponent = person.component(NameComponent.self)
+nameComponent?.firstName = "Johnny"
 ```
 #### Removing a Component
 ```Swift
@@ -92,7 +102,7 @@ System.shared.entities(inGroup: "DogOwners") // retrieves all entities in group 
 ```Swift
 System.shared.removeEntity(person) // removes the person from all groups
 ```
-#### Updating all entities
+#### Mass updating
 ```Swift
 System.shared.update() // execute all update methods of all the entities components
 
