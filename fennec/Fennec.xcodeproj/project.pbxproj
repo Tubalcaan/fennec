@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		35AD9465202723E7001C003D /* fennec.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35AD945B202723E7001C003D /* fennec.framework */; };
+		35AD9465202723E7001C003D /* Fennec.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35AD945B202723E7001C003D /* Fennec.framework */; };
 		35AD946A202723E7001C003D /* fennecTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AD9469202723E7001C003D /* fennecTests.swift */; };
 		35AD946C202723E7001C003D /* fennec.h in Headers */ = {isa = PBXBuildFile; fileRef = 35AD945E202723E7001C003D /* fennec.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35AD94762027247D001C003D /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35AD94752027247D001C003D /* Protocols.swift */; };
@@ -25,7 +25,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		35AD945B202723E7001C003D /* fennec.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = fennec.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		35AD945B202723E7001C003D /* Fennec.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Fennec.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35AD945E202723E7001C003D /* fennec.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = fennec.h; sourceTree = "<group>"; };
 		35AD945F202723E7001C003D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35AD9464202723E7001C003D /* fennecTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fennecTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,7 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35AD9465202723E7001C003D /* fennec.framework in Frameworks */,
+				35AD9465202723E7001C003D /* Fennec.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,7 +66,7 @@
 		35AD945C202723E7001C003D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				35AD945B202723E7001C003D /* fennec.framework */,
+				35AD945B202723E7001C003D /* Fennec.framework */,
 				35AD9464202723E7001C003D /* fennecTests.xctest */,
 			);
 			name = Products;
@@ -106,9 +106,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		35AD945A202723E7001C003D /* fennec */ = {
+		35AD945A202723E7001C003D /* Fennec */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 35AD946F202723E7001C003D /* Build configuration list for PBXNativeTarget "fennec" */;
+			buildConfigurationList = 35AD946F202723E7001C003D /* Build configuration list for PBXNativeTarget "Fennec" */;
 			buildPhases = (
 				35AD9456202723E7001C003D /* Sources */,
 				35AD9457202723E7001C003D /* Frameworks */,
@@ -119,9 +119,9 @@
 			);
 			dependencies = (
 			);
-			name = fennec;
+			name = Fennec;
 			productName = fennec;
-			productReference = 35AD945B202723E7001C003D /* fennec.framework */;
+			productReference = 35AD945B202723E7001C003D /* Fennec.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		35AD9463202723E7001C003D /* fennecTests */ = {
@@ -175,7 +175,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				35AD945A202723E7001C003D /* fennec */,
+				35AD945A202723E7001C003D /* Fennec */,
 				35AD9463202723E7001C003D /* fennecTests */,
 			);
 		};
@@ -221,7 +221,7 @@
 /* Begin PBXTargetDependency section */
 		35AD9467202723E7001C003D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 35AD945A202723E7001C003D /* fennec */;
+			target = 35AD945A202723E7001C003D /* Fennec */;
 			targetProxy = 35AD9466202723E7001C003D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -427,7 +427,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		35AD946F202723E7001C003D /* Build configuration list for PBXNativeTarget "fennec" */ = {
+		35AD946F202723E7001C003D /* Build configuration list for PBXNativeTarget "Fennec" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				35AD9470202723E7001C003D /* Debug */,

@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "35AD945A202723E7001C003D"
-               BuildableName = "fennec.framework"
-               BlueprintName = "fennec"
+               BuildableName = "Fennec.framework"
+               BlueprintName = "Fennec"
                ReferencedContainer = "container:Fennec.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -48,8 +48,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "35AD945A202723E7001C003D"
-            BuildableName = "fennec.framework"
-            BlueprintName = "fennec"
+            BuildableName = "Fennec.framework"
+            BlueprintName = "Fennec"
             ReferencedContainer = "container:Fennec.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -66,8 +66,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "35AD945A202723E7001C003D"
-            BuildableName = "fennec.framework"
-            BlueprintName = "fennec"
+            BuildableName = "Fennec.framework"
+            BlueprintName = "Fennec"
             ReferencedContainer = "container:Fennec.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
