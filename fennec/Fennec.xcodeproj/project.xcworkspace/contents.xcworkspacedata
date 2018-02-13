@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:fennec.xcodeproj">
+      location = "self:/Users/eliksir/repositories/fennec/fennec/Fennec.xcodeproj">
    </FileRef>
 </Workspace>

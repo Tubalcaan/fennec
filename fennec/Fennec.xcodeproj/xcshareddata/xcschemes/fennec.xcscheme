@@ -17,7 +17,7 @@
                BlueprintIdentifier = "35AD945A202723E7001C003D"
                BuildableName = "fennec.framework"
                BlueprintName = "fennec"
-               ReferencedContainer = "container:fennec.xcodeproj">
+               ReferencedContainer = "container:Fennec.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -36,7 +36,7 @@
                BlueprintIdentifier = "35AD9463202723E7001C003D"
                BuildableName = "fennecTests.xctest"
                BlueprintName = "fennecTests"
-               ReferencedContainer = "container:fennec.xcodeproj">
+               ReferencedContainer = "container:Fennec.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -46,7 +46,7 @@
             BlueprintIdentifier = "35AD945A202723E7001C003D"
             BuildableName = "fennec.framework"
             BlueprintName = "fennec"
-            ReferencedContainer = "container:fennec.xcodeproj">
+            ReferencedContainer = "container:Fennec.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -69,7 +69,7 @@
             BlueprintIdentifier = "35AD945A202723E7001C003D"
             BuildableName = "fennec.framework"
             BlueprintName = "fennec"
-            ReferencedContainer = "container:fennec.xcodeproj">
+            ReferencedContainer = "container:Fennec.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -87,7 +87,7 @@
             BlueprintIdentifier = "35AD945A202723E7001C003D"
             BuildableName = "fennec.framework"
             BlueprintName = "fennec"
-            ReferencedContainer = "container:fennec.xcodeproj">
+            ReferencedContainer = "container:Fennec.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

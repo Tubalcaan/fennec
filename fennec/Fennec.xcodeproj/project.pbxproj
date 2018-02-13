@@ -163,7 +163,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 35AD9455202723E7001C003D /* Build configuration list for PBXProject "fennec" */;
+			buildConfigurationList = 35AD9455202723E7001C003D /* Build configuration list for PBXProject "Fennec" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -418,7 +418,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		35AD9455202723E7001C003D /* Build configuration list for PBXProject "fennec" */ = {
+		35AD9455202723E7001C003D /* Build configuration list for PBXProject "Fennec" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				35AD946D202723E7001C003D /* Debug */,
