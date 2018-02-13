@@ -1,14 +1,20 @@
 <center><img src="fennec.png" width=400></center>
 
 # Fennec
-Fennec is a light and portable implementation of Entity-Component System
+Fennec is a light and portable implementation of Entity-Component System (aka _ECS_)
 
 # Purpose of Fennec
 Fennec is intended to enhance your data objects so that you can implement a **light Entity-Component System**.
 
 You can create or transform your business objects into **Entities** and convert all their attributes to **Components**.
 
-Entity-Component System allows you to make business changes easier and provides you with more scalability and reusability of your objects.
+Entity-Component System allows you to make business changes easily and provides you with more scalability and reusability of your objects.
+
+Fennec's main components are
+* **Entities** : the objects you handle in your application
+* **Components** : the attributes and behavior of your entities
+* **Systems** : the managers dedicated to certain types of components
+* **Engine** : the main manager of all above
 
 # Implementation
 
@@ -16,7 +22,7 @@ Entity-Component System allows you to make business changes easier and provides 
 
 Entities all implement the Entity protocol.
 
-Depending on your design, you may have only one type for all your objects (an Entity is only a component container) or one Entity for every object you handle in your application.
+Depending on your design, you may have only one type for all your objects (an Entity is only a component container) or one Entity for each kind of object you handle in your application.
 
 ### One for all
 You may have only one Entity type for all your objects
@@ -43,13 +49,13 @@ struct NameComponent: Component {
     var lastName: String = ""
 }
 ```
-Components have a default implementation of the "update()" method. You may redefine this method to provide a behavior when component must be updated
+Components have a default implementation of the "update(deltaTime:)" method. You may redefine this method to provide a behavior when component must be updated after a certain TimeInterval
 ```Swift
 struct NameComponent: Component {
     var firstName: String = ""
     var lastName: String = ""
 
-    mutating func update() {
+    mutating func update(deltaTime seconds: TimeInterval) {
         firstName = ""
         lastName = ""
     }
@@ -67,12 +73,16 @@ person.addComponent(nameComponent)
 ```Swift
 let nameComponent = person.component(NameComponent.self)
 nameComponent?.firstName // Optional("John")
+// You may also use : person[NameComponent.self]
 ```
 #### Updating a Component
 ⚠️ Warning : you must be careful about the original type of your component when updating it. Don't forget Value Types are copied when modified.
 ```Swift
 // your component is a struct
-person.component(NameComponent.self)?.firstName = "Johnny"
+if var component = person.component(NameComponent.self) {
+  component.firstName = "Johnny"
+  person.addComponent(component) // replace the old component
+}
 
 // your component is a class
 let nameComponent = person.component(NameComponent.self)
@@ -84,31 +94,46 @@ person.removeComponent(NameComponent.self)
 // person.component(NameComponent.self) returns nil
 ```
 ## System
-The System singleton provides methods to attach the entities and apply mass transformations to all or a subset of entities
+The Systems provide a centralized way to handle components of a certain type. Systems are added to the engine.
 
-#### Adding an Entity to the System
+#### Defining a System
 ```Swift
-System.shared.addEntity(person)
+struct NameSystem: System {
+    var id: UUID = UUID()
+
+    // if your component is a value type, you must reset the component every time
+    func update(deltaTime seconds: TimeInterval) {
+      // get the components or entities you need to update
+    }
+}
 ```
 You can also categorize your entities by groups
 ```Swift
 System.shared.addEntity(person, toGroup: "DogOwners") // the person Entity is also added to the default group
 ```
+## Engine
+The Engine is the heart of the ECS. You add your entities and your systems to the Engine. You can also group your entities.
+
+#### Adding an Entity
+```Swift
+Engine.shared.addEntity(entity)
+
+Engine.shared.addEntity(entity, inGroup: "aGroup")
+```
 #### Retrieving an Entity
 ```Swift
-System.shared.entities() // retrieves all entities in the default group
+Engine.shared.entities() // retrieves all entities in the default group
 
-System.shared.entities(inGroup: "DogOwners") // retrieves all entities in group "DogOwners"
+Engine.shared.entities(inGroup: "DogOwners") // retrieves all entities in group "DogOwners"
 ```
-#### Removing an Entity from the System
+#### Removing an Entity from the Engine
 ```Swift
 System.shared.removeEntity(person) // removes the person from all groups
 ```
 #### Mass updating
 ```Swift
-System.shared.update() // execute all update methods of all the entities components
-
-System.shared.update(entitiesInGroup: "DogOwners") components
+Engine.shared.addSystem(mySystem)
+Engine.shared.update(deltaTime: 0.2) // executes the update(deltaTime:) of all added systems
 ```
 # Installation
 ## Carthage
