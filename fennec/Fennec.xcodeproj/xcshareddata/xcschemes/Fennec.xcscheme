@@ -29,26 +29,7 @@
       language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "35AD9463202723E7001C003D"
-               BuildableName = "fennecTests.xctest"
-               BlueprintName = "fennecTests"
-               ReferencedContainer = "container:Fennec.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "35AD945A202723E7001C003D"
-            BuildableName = "fennec.framework"
-            BlueprintName = "fennec"
-            ReferencedContainer = "container:Fennec.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
