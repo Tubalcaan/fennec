@@ -16,10 +16,9 @@ Fennec's main components are
 * **Systems** : the managers dedicated to certain types of components
 * **Engine** : the main manager of all above
 
-# Implementation
+# Usage
 
-## Entity
-
+## 🤖 Entity
 Entities all implement the Entity protocol.
 
 Depending on your design, you may have only one type for all your objects (an Entity is only a component container) or one Entity for each kind of object you handle in your application.
@@ -29,7 +28,7 @@ struct MyEntity: Entity {
     var id: UUID = UUID()
 }
 ```
-## Component
+## 🔧 Component
 Components all implement the Component protocol. You may extend any type with this protocol or create your own
 ```Swift
 struct PositionComponent: Component {
@@ -53,19 +52,19 @@ struct PositionComponent: Component {
 ### Managing Components in Entity
 Entities provide methods to handle Components
 
-#### Adding a Component
+#### _Adding a Component_
 ```Swift
 var entity = MyEntity(id: UUID())
 var positionComponent = PositionComponent(x: 10, y: 20)
 entity.addComponent(positionComponent)
 ```
-#### Retrieving a Component
+#### _Retrieving a Component_
 ```Swift
 let positionComponent = entity.component(PositionComponent.self)
 positionComponent?.x // Optional(10)
 // You may also use : entity[PositionComponent.self]
 ```
-#### Updating a Component
+#### _Updating a Component_
 ⚠️ Warning : you must be careful about the original type of your component when updating it. Don't forget Value Types are copied when modified.
 ```Swift
 // your component is a struct
@@ -78,15 +77,16 @@ if var positionComponent = entity.component(PositionComponent.self) {
 let positionComponent = entity.component(PositionComponent.self)
 positionComponent?.x = 12
 ```
-#### Removing a Component
+#### _Removing a Component_
 ```Swift
 entity.removeComponent(PositionComponent.self)
 // entity.component(PositionComponent.self) returns nil
 ```
-## System
-The Systems provide a centralized way to handle components of a certain type. Systems are added to the engine.
+## 🎛 System
+The Systems provide a centralized way to handle components of a certain type.
+You can define the update(deltaTime:) method. Typically, you get all components of a specific type and update them.
 
-#### Defining a System
+#### _Defining a System_
 ```Swift
 struct PositionSystem: System {
     var id: UUID = UUID()
@@ -96,10 +96,10 @@ struct PositionSystem: System {
     }
 }
 ```
-## Engine
+## ⚙️ Engine
 The Engine is the heart of the ECS. You add your entities and your systems to the Engine. You can also group your entities.
 
-#### Adding an Entity to the Engine
+#### _Adding an Entity to the Engine_
 ```Swift
 // add the entity in the default group (default group contains all entities)
 Engine.shared.addEntity(entity)
@@ -107,24 +107,24 @@ Engine.shared.addEntity(entity)
 // add the entity in the group "aGroup" (and in the default group as well)
 Engine.shared.addEntity(entity, inGroup: "aGroup")
 ```
-#### Retrieving an Entity
+#### _Retrieving an Entity_
 ```Swift
 Engine.shared.entities() // retrieves all entities in the default group
 
 Engine.shared.entities(inGroup: "aGroup") // retrieves all entities in group "aGroup"
 ```
-#### Removing an Entity from the Engine
+#### _Removing an Entity from the Engine_
 ```Swift
 Engine.shared.removeEntity(entity) // removes the person from all groups
 ```
-#### Mass updating
+#### Global updating
+The Engine enables you to update all components, by using the systems
 ```Swift
 Engine.shared.addSystem(mySystem)
 Engine.shared.update(deltaTime: 0.2) // executes the update(deltaTime:) of all added systems
 ```
 # Installation
 ## Carthage
-
 To install, simply add the following lines to your Cartfile :
 ```ruby
 github "Tubalcaan/Fennec" ~> 1.0
