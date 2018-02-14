@@ -24,111 +24,98 @@ Entities all implement the Entity protocol.
 
 Depending on your design, you may have only one type for all your objects (an Entity is only a component container) or one Entity for each kind of object you handle in your application.
 
-### One for all
-You may have only one Entity type for all your objects
 ```Swift
-struct GenericEntity: Entity {
+struct MyEntity: Entity {
     var id: UUID = UUID()
 }
 ```
-### One Entity per type
-```Swift
-struct PersonEntity: Entity {
-    var id: UUID = UUID()
-}
-struct DogEntity: Entity {
-    var id: UUID = UUID()
-}
-```
-
 ## Component
 Components all implement the Component protocol. You may extend any type with this protocol or create your own
 ```Swift
-struct NameComponent: Component {
-    var firstName: String = ""
-    var lastName: String = ""
+struct PositionComponent: Component {
+    var x: Int = 0
+    var y: Int = 0
 }
 ```
 Components have a default implementation of the "update(deltaTime:)" method. You may redefine this method to provide a behavior when component must be updated after a certain TimeInterval
 ```Swift
-struct NameComponent: Component {
-    var firstName: String = ""
-    var lastName: String = ""
+struct PositionComponent: Component {
+    var x: Int = 0
+    var y: Int = 0
 
     mutating func update(deltaTime seconds: TimeInterval) {
-        firstName = ""
-        lastName = ""
+        x += 2
+        y += 1
     }
 }
 ```
+
 ### Managing Components in Entity
 Entities provide methods to handle Components
+
 #### Adding a Component
 ```Swift
-var person = PersonEntity(id: UUID())
-var nameComponent = NameComponent(firstName: "John", lastName: "Doe")
-person.addComponent(nameComponent)
+var entity = MyEntity(id: UUID())
+var positionComponent = PositionComponent(x: 10, y: 20)
+entity.addComponent(positionComponent)
 ```
 #### Retrieving a Component
 ```Swift
-let nameComponent = person.component(NameComponent.self)
-nameComponent?.firstName // Optional("John")
-// You may also use : person[NameComponent.self]
+let positionComponent = entity.component(PositionComponent.self)
+positionComponent?.x // Optional(10)
+// You may also use : entity[PositionComponent.self]
 ```
 #### Updating a Component
 ⚠️ Warning : you must be careful about the original type of your component when updating it. Don't forget Value Types are copied when modified.
 ```Swift
 // your component is a struct
-if var component = person.component(NameComponent.self) {
-  component.firstName = "Johnny"
-  person.addComponent(component) // replace the old component
+if var positionComponent = entity.component(PositionComponent.self) {
+  positionComponent.x = 12
+  entity.addComponent(positionComponent) // replace the old component
 }
 
 // your component is a class
-let nameComponent = person.component(NameComponent.self)
-nameComponent?.firstName = "Johnny"
+let positionComponent = entity.component(PositionComponent.self)
+positionComponent?.x = 12
 ```
 #### Removing a Component
 ```Swift
-person.removeComponent(NameComponent.self)
-// person.component(NameComponent.self) returns nil
+entity.removeComponent(PositionComponent.self)
+// entity.component(PositionComponent.self) returns nil
 ```
 ## System
 The Systems provide a centralized way to handle components of a certain type. Systems are added to the engine.
 
 #### Defining a System
 ```Swift
-struct NameSystem: System {
+struct PositionSystem: System {
     var id: UUID = UUID()
 
-    // if your component is a value type, you must reset the component every time
     func update(deltaTime seconds: TimeInterval) {
       // get the components or entities you need to update
     }
 }
 ```
-You can also categorize your entities by groups
-```Swift
-System.shared.addEntity(person, toGroup: "DogOwners") // the person Entity is also added to the default group
-```
 ## Engine
 The Engine is the heart of the ECS. You add your entities and your systems to the Engine. You can also group your entities.
 
-#### Adding an Entity
+#### Adding an Entity to the Engine
 ```Swift
+// add the entity in the default group (default group contains all entities)
 Engine.shared.addEntity(entity)
 
+// add the entity in the group "aGroup" (and in the default group as well)
 Engine.shared.addEntity(entity, inGroup: "aGroup")
 ```
 #### Retrieving an Entity
 ```Swift
 Engine.shared.entities() // retrieves all entities in the default group
 
-Engine.shared.entities(inGroup: "DogOwners") // retrieves all entities in group "DogOwners"
+Engine.shared.entities(inGroup: "aGroup") // retrieves all entities in group "aGroup"
 ```
 #### Removing an Entity from the Engine
 ```Swift
-System.shared.removeEntity(person) // removes the person from all groups
+Engine.shared.removeEntity(entity) // removes the person from all groups
 ```
 #### Mass updating
 ```Swift
