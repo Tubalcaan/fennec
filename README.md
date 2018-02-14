@@ -137,3 +137,8 @@ Engine.shared.update(deltaTime: 0.2) // executes the update(deltaTime:) of all a
 ```
 # Installation
 ## Carthage
+
+To install, simply add the following lines to your Cartfile :
+```ruby
+github "Tubalcaan/Fennec" ~> 1.0
+```

@@ -57,8 +57,6 @@ public struct Engine {
     
     public mutating func removeEntity(_ entity: Entity) {
         allEntities[entity.id] = nil
-        // TODO
-        // remove entity from "" group and its group
         groups.enumerated().forEach { (offset: Int, element: (key: String, value: [Entity])) in
             if let index = groups[element.key]?.index(where: { ent -> Bool in
                 entity.id == ent.id
